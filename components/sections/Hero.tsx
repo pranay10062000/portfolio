@@ -47,10 +47,10 @@ export default function Hero() {
       <div className="relative z-30 w-full min-h-[100vh] max-w-[1600px] mx-auto overflow-hidden">
 
         {/* Foreground Content Columns */}
-        <div className="absolute top-0 w-full flex flex-col md:flex-row justify-between pt-32 px-6 md:px-12 lg:px-20 pointer-events-none">
+        <div className="relative z-40 w-full flex flex-col md:flex-row justify-between pt-28 md:pt-32 lg:pt-40 px-6 md:px-12 lg:px-20 pointer-events-none">
           
           {/* Left Side: Huge Typography */}
-          <div className="w-full md:w-[40%] flex flex-col items-start mt-12 md:mt-24 pointer-events-auto">
+          <div className="w-full md:w-[40%] flex flex-col items-start mt-8 md:mt-12 pointer-events-auto">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -67,7 +67,7 @@ export default function Hero() {
           </div>
 
           {/* Right Side: Mission & Contact */}
-          <div className="w-full md:w-[35%] flex flex-col items-start md:items-start md:text-left mt-16 md:mt-48 pointer-events-auto lg:pl-16">
+          <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col items-start md:text-left mt-16 md:mt-24 lg:mt-32 pointer-events-auto lg:pl-12">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
