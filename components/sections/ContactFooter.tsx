@@ -34,7 +34,7 @@ export default function ContactFooter() {
             </h2>
             
             <p className="text-xl text-white/50 mb-12 max-w-lg font-light leading-relaxed">
-              Whether you have an enterprise-scale architecture question, need a high-performance system engineered, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
+              I am currently seeking new full-time opportunities where I can contribute to building high-performance, enterprise-scale systems. Whether you have an open role, a question, or just want to say hi, my inbox is always open!
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
