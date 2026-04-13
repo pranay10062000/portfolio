@@ -45,7 +45,7 @@ export default function ResumePage() {
 
             <div className="ml-4">
               <a 
-                href="/assets/Pranay_Resume_SDE_1_Page.pdf" 
+                href="/assets/Pranay_Resume_SDE.pdf" 
                 download="Pranay_Dumbhare_Resume.pdf" 
                 className="inline-flex items-center space-x-3 px-6 py-3 bg-[#F97316] hover:bg-[#EA580C] text-white rounded-full font-semibold shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:scale-105 transition-all duration-300"
               >
