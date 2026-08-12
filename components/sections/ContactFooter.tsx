@@ -1,87 +1,124 @@
-import { Download, Github, Linkedin, Mail, Phone } from "lucide-react";
+"use client";
 
-import { Button } from "@/components/ui/Button";
-import { contactEmail, resumePath, socialLinks } from "@/lib/portfolio-data";
-
-const socialIcons = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-} as const;
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function ContactFooter() {
   return (
-    <footer id="contact" className="relative w-full overflow-hidden border-t border-white/[0.07] bg-[#07080a]">
-      <div
-        className="absolute -right-40 top-0 h-[28rem] w-[28rem] rounded-full bg-accent/[0.08] blur-[130px]"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto max-w-[1180px] px-5 pb-8 pt-20 sm:px-8 sm:pt-24 lg:px-10 lg:pt-28 2xl:max-w-[1480px]">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent sm:text-sm">
-              Contact
-            </p>
-            <h2 className="text-balance mt-4 max-w-[12ch] text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.94] tracking-[-0.06em] text-white">
-              Let&apos;s build a backend that holds up under pressure.
+    <footer id="contact" className="relative w-full overflow-hidden border-t border-white/5 bg-[#07070A] pb-8 pt-24 sm:pb-12 sm:pt-32 lg:pt-40">
+      
+      {/* Massive radial ambient glow */}
+      <div className="pointer-events-none absolute right-[-20%] top-0 h-[min(800px,110vw)] w-[min(800px,110vw)] rounded-full bg-[#F97316]/10 blur-[120px] sm:right-[-10%] sm:blur-[200px]" />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 md:px-12">
+        
+        <div className="grid grid-cols-1 items-center gap-12 sm:gap-16 lg:grid-cols-2 lg:gap-20">
+          
+          {/* Left Block: Massive engaging text */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col justify-center"
+          >
+            <div className="flex items-center space-x-4 mb-8">
+              <span className="w-12 h-[2px] bg-[#F97316]"></span>
+              <span className="text-sm font-mono text-[#F97316] uppercase tracking-widest font-bold">04. What&apos;s Next?</span>
+            </div>
+            
+            <h2 className="mb-6 text-4xl font-black leading-[1.1] tracking-tighter text-white sm:text-6xl md:text-7xl">
+              Let&apos;s build <br />
+              <span className="text-[#F97316]">together.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-7 text-white/58 sm:text-lg sm:leading-8">
-              If you are hiring for Java backend, distributed systems, performance engineering,
-              or GenAI-enabled developer tooling, I would be glad to talk.
+            
+            <p className="mb-8 max-w-lg text-base font-light leading-relaxed text-white/50 sm:mb-12 sm:text-lg md:text-xl">
+              I am currently seeking new full-time opportunities where I can contribute to building high-performance, enterprise-scale systems. Whether you have an open role, a question, or just want to say hi, my inbox is always open!
             </p>
-          </div>
 
-          <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-5 sm:p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Email me</p>
-            <a
-              href={`mailto:${contactEmail}`}
-              className="mt-3 block break-all text-lg font-bold text-white hover:text-accent sm:text-xl"
-            >
-              {contactEmail}
-            </a>
-            <div className="mt-6 flex flex-col gap-3 min-[440px]:flex-row lg:flex-col xl:flex-row">
-              <Button href={`mailto:${contactEmail}`} className="w-full">
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Start a conversation
-              </Button>
-              <Button href={resumePath} variant="secondary" download className="w-full">
-                <Download className="h-4 w-4" aria-hidden="true" />
-                Resume
-              </Button>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2 border-t border-white/[0.08] pt-5">
-              {socialLinks.map((link) => {
-                const Icon = socialIcons[link.label];
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    aria-label={link.label === "Email" ? `Email ${contactEmail}` : `Open Pranay's ${link.label}`}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 text-sm font-medium text-white/62 hover:border-white/22 hover:text-white"
-                  >
-                    <Icon className="h-4 w-4" aria-hidden="true" />
-                    {link.label}
-                  </a>
-                );
-              })}
-              <a
-                href="tel:+917744024976"
-                aria-label="Call Pranay at +91 77440 24976"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 text-sm font-medium text-white/62 hover:border-white/22 hover:text-white"
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <a 
+                href="mailto:pranaydumbhare1006@gmail.com" 
+                className="inline-flex min-h-12 w-max items-center space-x-3 rounded-full bg-[#F97316] px-8 py-3 font-bold text-white shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all hover:scale-105 hover:bg-[#EA580C] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] sm:py-4"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                Phone
+                <span>Say Hello</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
               </a>
+
+              {/* Integrated Social Links & Now Contact Links */}
+              <div className="mt-4 flex flex-wrap gap-3 sm:mt-0 sm:gap-4">
+                <a href="mailto:pranaydumbhare1006@gmail.com" title="Email" aria-label="Email Pranay" className="group flex min-h-12 min-w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:scale-110 hover:border-[#F97316] hover:bg-[#F97316] hover:text-white sm:p-4">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </a>
+                <a href="tel:+917744024976" title="Phone" aria-label="Call Pranay" className="group flex min-h-12 min-w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:scale-110 hover:border-[#F97316] hover:bg-[#F97316] hover:text-white sm:p-4">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </a>
+                <a href="https://github.com/pranay10062000" target="_blank" rel="noopener noreferrer" aria-label="Pranay on GitHub" className="group flex min-h-12 min-w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:scale-110 hover:border-[#F97316] hover:bg-[#F97316] hover:text-white sm:p-4">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/pranay-dumbhare/" target="_blank" rel="noopener noreferrer" aria-label="Pranay on LinkedIn" className="group flex min-h-12 min-w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:scale-110 hover:border-[#F97316] hover:bg-[#F97316] hover:text-white sm:p-4">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+              </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Right Block: Image Visual Graphic */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative hidden w-full items-center justify-center lg:flex"
+          >
+             {/* Floating and Morphing Container */}
+             <motion.div 
+               animate={{ 
+                 y: [0, -15, 0],
+                 borderRadius: [
+                   '60% 40% 30% 70% / 60% 30% 70% 40%',
+                   '30% 60% 70% 40% / 50% 60% 30% 60%',
+                   '60% 40% 30% 70% / 60% 30% 70% 40%'
+                 ] 
+               }}
+               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+               className="relative aspect-square w-full max-w-[500px] overflow-hidden border-2 border-[#F97316]/30 bg-white/5 shadow-[0_0_50px_rgba(249,115,22,0.2)] backdrop-blur-sm"
+             >
+                <Image 
+                  src="/assets/me_and_cat_footer.png" 
+                  alt="Me and my Cat" 
+                  fill
+                  quality={100}
+                  unoptimized={true}
+                  className="object-cover scale-[1.05]"
+                />
+             </motion.div>
+          </motion.div>
+
+        </div>
+        
+        {/* Footer Base Core */}
+        <div className="mt-24 flex w-full justify-center border-t border-white/10 pt-8 sm:mt-32 sm:pt-10 lg:mt-40">
+          <p className="text-white/30 text-xs font-mono text-center hover:text-white/60 transition-colors">
+            Made with ❤️ by Pranay using Antigravity
+          </p>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-white/[0.07] pt-6 text-xs text-white/34 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Pranay Dumbhare</p>
-          <p>Java · Spring Boot · Microservices · Performance</p>
-        </div>
       </div>
     </footer>
   );
