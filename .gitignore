@@ -26,6 +26,7 @@ yarn-error.log*
 .pnpm-debug.log*
 /.npm-cache/
 .next-server.*.log
+qa-dev.*.log
 
 # local env files
 .env*.local

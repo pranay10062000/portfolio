@@ -20,7 +20,7 @@ export default function Hero() {
 
       {/* The Massive Bottom-Anchored Emoticon */}
       {/* Increased scale vastly and translated upwards to reach higher into the viewport */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 flex h-full min-h-[720px] w-full max-w-[1400px] -translate-x-1/2 translate-y-[4%] scale-[1.4] items-end justify-center sm:translate-y-0 sm:scale-[1.22] lg:translate-y-[-5%] lg:scale-[1.15]">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 flex h-full min-h-[720px] w-full max-w-[1400px] -translate-x-1/2 origin-bottom scale-[1.4] items-end justify-center sm:origin-center sm:scale-[1.22] lg:translate-y-[-5%] lg:scale-[1.15]">
         <motion.div 
           className="relative h-full w-full"
           animate={{ y: [0, -20, 0] }}
@@ -41,7 +41,7 @@ export default function Hero() {
       </div>
 
       {/* The Heavy Blackish Gradient overlay specifically requested by user */}
-      <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-background via-background/80 to-transparent z-20 pointer-events-none" />
+      <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-[44vh] w-full bg-gradient-to-t from-background via-background/50 to-transparent sm:h-[50vh] sm:via-background/80" />
 
       {/* Hero Container for Typography */}
       <div className="relative z-30 mx-auto flex min-h-[100svh] w-full max-w-[1600px] flex-col">
