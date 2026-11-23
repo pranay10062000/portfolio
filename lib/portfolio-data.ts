@@ -13,6 +13,7 @@ export type ExperienceEntry = {
   bullets: string[];
   technologies: string[];
   featured?: boolean;
+  note?: string;
 };
 
 export type WorkEntry = {
@@ -42,12 +43,14 @@ export type SocialLink = {
 };
 
 export const resumePath = "/assets/Pranay_Dumbhare_Resume.pdf";
+export const detailedResumePath = "/assets/Pranay_Dumbhare_Resume_Detailed.pdf";
 
 export const navigationLinks: NavigationLink[] = [
   { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/#projects" },
   { label: "Skills", href: "/#skills" },
   { label: "About", href: "/#about" },
+  { label: "Community", href: "/#community" },
 ];
 
 export const impactMetrics = [
@@ -74,7 +77,7 @@ export const impactMetrics = [
 ];
 
 export const aboutCopy =
-  "I am a software developer at Oracle with 3+ years of experience building backend services for account opening and lending. I work across API design, business logic, database persistence, testing, and deployment. Beyond feature development, I improve service performance and build AI-assisted tools that make engineering work more repeatable.";
+  "I am a software developer at Oracle with 3+ years of experience building backend services for account origination, account opening, and lending. My work spans API contracts, business logic, database persistence, testing, and deployment, alongside performance engineering and AI-assisted developer tools. Outside enterprise software, I have built robotics simulations, worked on medical image models, and contributed to community and student mentoring initiatives.";
 
 export const experienceEntries: ExperienceEntry[] = [
   {
@@ -85,18 +88,23 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Pune, Maharashtra",
     period: "Jul 2023 — Present",
     featured: true,
+    note: "Promoted in August 2026.",
     bullets: [
-      "Designed and built Java and Spring Boot microservices for account opening, implementing OpenAPI contracts, controllers, service logic, Oracle Database persistence, and automated tests.",
-      "Integrated 20+ account-opening features with retail deposit and lending services to support loan processing and the creation of current and savings accounts.",
-      "Built PATCH APIs and account-management endpoints for banking processes involving multiple stakeholders, reducing manual intervention by 35%.",
-      "Resolved 120+ legacy code issues per patch cycle, helping reduce production bugs by 60%.",
-      "Developed a GenAI-assisted credit assessment feature using credit bureau reports, reducing account-opening turnaround time by 60% compared with manual processing.",
-      "Integrated Oracle Coherence distributed caching, reducing API latency by 40%; orchestrated asynchronous banking processes with Netflix Conductor.",
-      "Reduced targeted API response times by 60% through asynchronous calls, database indexing, read-only flags, and removal of repeated service calls, guided by JMeter load tests and Zipkin traces.",
-      "Built an agentic AI pipeline to automate unit testing and service-level API testing across 17 services, achieving 90% test coverage, measured with JaCoCo.",
-      "Built Jenkins CI/CD pipelines and deployment scripts, reducing deployment time by 75%; configured on-premises test environments to meet customer deployment and performance requirements.",
-      "Created Codex skills and plugins for deployment script generation, log analysis, and performance testing, reducing feature development time by 70%.",
-      "Mentored 2 junior engineers in DevOps for 10+ environments, including cloud environments on OCI.",
+      "Designed REST API contracts in Swagger/OpenAPI YAML for account origination, defining interfaces for loan applications and the opening of current and savings accounts.",
+      "Implemented Java and Spring Boot microservices end to end: API controllers, service-layer business logic, Oracle Database persistence, and automated tests for account opening and lending.",
+      "Integrated 20+ account-opening features with retail deposit and lending services, collaborating across teams to support loan processing and current and savings account creation.",
+      "Built PATCH APIs and relationship-management endpoints for banking processes involving multiple stakeholders, reducing manual intervention by 35%.",
+      "Developed a GenAI-assisted credit assessment feature to analyze credit bureau reports for account origination, reducing full account-opening turnaround time by 60% versus manual processing.",
+      "Integrated Oracle Coherence distributed caching into banking services, reducing API latency by 40% for the measured operations.",
+      "Orchestrated multi-step banking processes with Netflix Conductor for asynchronous service execution.",
+      "Served as the point of contact for performance engineering across loan-processing and digital-banking services, using JMeter load tests and Zipkin distributed traces to investigate slow requests and downstream service calls.",
+      "Reduced targeted API response times by 60% through asynchronous service calls, database indexing, read-only flags, and removal of unnecessary or repeated downstream calls identified during load testing and trace analysis.",
+      "Resolved 120+ legacy code issues per patch cycle in banking services, contributing backend fixes that helped reduce production bugs by 60%.",
+      "Built an agentic AI testing pipeline across 17 services, achieving 90% test coverage with JaCoCo; implemented unit and service-level API tests using Groovy and Postman.",
+      "Built Jenkins CI/CD pipelines and Linux shell scripts to automate banking microservice builds and deployments, reducing deployment time by 75%.",
+      "Created reusable Codex skills and plugins for deployment script generation, application log analysis, and performance testing; packaged recurring engineering procedures as task-specific AI instructions, reducing feature development time by 70%.",
+      "Configured on-premises test environments for banking services, collaborating with engineering and customer-support teams on customer deployment, CI/CD, and performance requirements.",
+      "Mentored 2 junior engineers to lead DevOps activities across 10+ environments, including cloud environments on Oracle Cloud Infrastructure (OCI).",
     ],
     technologies: [
       "Java",
@@ -111,6 +119,21 @@ export const experienceEntries: ExperienceEntry[] = [
     ],
   },
   {
+    company: "Adsys",
+    companyUrl: "https://adsys.in/",
+    role: "Machine Learning Intern",
+    team: "Medical image analysis",
+    // TODO: Confirm the internship location; do not infer that it was remote.
+    location: "",
+    period: "Jan 2023 — Jun 2023",
+    bullets: [
+      // The 94% result is retained from the detailed resume. TODO: Confirm evaluation task, dataset, and test-set size.
+      "Developed CNN-based segmentation and classification models to identify red and white blood cells and platelets with 94% accuracy, using TensorFlow, OpenCV, and Roboflow.",
+      "Collaborated with medical domain experts to review model outputs and refine image-processing and classification logic for the blood-cell identification task.",
+    ],
+    technologies: ["Python", "TensorFlow", "OpenCV", "CNNs", "Roboflow"],
+  },
+  {
     company: "Oracle",
     companyUrl: "https://www.oracle.com/in/",
     role: "Application Developer Intern",
@@ -118,11 +141,12 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Pune, Maharashtra",
     period: "May 2022 — Jul 2022",
     bullets: [
-      "Built multi-source search and indexing prototypes, reducing query response time by 30%.",
-      "Evaluated indexing and query strategies, documenting experiments and implementation decisions.",
-      "Developed an Apache Lucene proof of concept for efficient data retrieval.",
+      "Built Spring Boot search and indexing prototypes for queries across multiple data sources, using REST APIs and GraphQL in the search implementation and reducing query response time by 30%.",
+      "Developed an Apache Lucene proof of concept to evaluate indexed data retrieval and explore global search across multiple data sources.",
+      "Compared indexing and query strategies; documented prototype experiments and implementation decisions for team knowledge transfer and future search development.",
     ],
-    technologies: ["Apache Lucene", "Search", "Indexing"],
+    // The separate Lucene proof of concept is not assumed to have produced the 30% result.
+    technologies: ["Java", "Spring Boot", "REST APIs", "GraphQL", "Apache Lucene"],
   },
 ];
 
@@ -133,8 +157,9 @@ export const workEntries: WorkEntry[] = [
     description:
       "Built a browser-based robotics editor with MuJoCo physics simulation and real-time 3D visualization, connecting interactive movement controls with robot training.",
     details: [
-      "Implemented inverse-kinematics controls and structured action interfaces for robotic policies.",
-      "Built reinforcement and imitation learning pipelines using PPO, kinematic retargeting, and domain randomization.",
+      "Implemented inverse kinematics controls for robot positioning and structured action interfaces for robotic policies, connecting movement inputs with the simulation environment.",
+      "Converted raw human motion into multi-task humanoid training data through kinematic retargeting, mapping recorded movements to a robot model.",
+      "Engineered reinforcement and imitation learning pipelines, using Proximal Policy Optimization (PPO) for policy training and domain randomization to vary simulated training conditions.",
     ],
     impact: "From human motion to robot training data",
     technologies: ["MuJoCo", "Inverse Kinematics", "PPO", "Reinforcement Learning"],
@@ -147,11 +172,14 @@ export const workEntries: WorkEntry[] = [
     eyebrow: "Cell nuclei identification and counting",
     title: "CoNIC",
     description:
-      "Explored a hybrid deep-learning and image-processing approach to identify, classify, and count cell nuclei in medical images.",
+      "Developed a hybrid medical image analysis approach for colon-nuclei segmentation, classification, and counting, building on a supplied dataset and baseline model.",
     details: [
-      "Integrated the provided dataset and baseline model, then tuned training and validation for cell-nuclei analysis.",
-      "Combined learned features with texture and edge descriptors; first-author research published by Springer in 2023.",
+      "Integrated the provided CoNIC 2022 histology dataset with the HoVer-Net baseline and tuned the model for colon-nuclei segmentation, classification, and counting.",
+      "Combined ResNet50-based features with local binary pattern (LBP) and histogram of oriented gradients (HOG) descriptors to incorporate image texture and edge information.",
+      "Trained and validated the hybrid model on the supplied dataset, evaluating segmentation, classification, and nuclei-counting outputs against the existing baseline approach.",
+      "Published the research as first author in the CVIP 2022 proceedings, Communications in Computer and Information Science, vol. 1777 (Springer, May 2023).",
     ],
+    // TODO: Add verified evaluation metrics; do not restore the unconfirmed 91% or 3% claims.
     impact: "First-author research publication",
     technologies: ["Machine Learning", "Medical Image Analysis", "Model Tuning"],
     href: "https://link.springer.com/chapter/10.1007/978-3-031-31417-9_52",
@@ -188,9 +216,63 @@ export const skillGroups: SkillGroup[] = [
     items: ["JMeter", "Zipkin", "Postman", "Groovy", "JaCoCo", "Grafana"],
   },
   {
-    title: "AI & Robotics",
-    description: "AI-assisted engineering, image analysis, and robot simulation.",
-    items: ["Generative AI", "Agentic AI", "OpenAI Codex", "TensorFlow", "OpenCV", "MuJoCo"],
+    title: "AI Tools",
+    description: "Reusable AI-assisted engineering and developer automation.",
+    items: ["Generative AI", "Agentic AI", "OpenAI Codex"],
+  },
+  {
+    title: "Robotics",
+    description: "Robot simulation, movement controls, and policy training.",
+    items: ["MuJoCo", "Inverse Kinematics", "PPO", "Reinforcement Learning", "Imitation Learning"],
+  },
+  {
+    title: "ML Libraries",
+    description: "Image processing, model development, and data analysis.",
+    items: ["TensorFlow", "Keras", "OpenCV", "Roboflow", "NumPy", "Pandas"],
+  },
+];
+
+export const awardDescription =
+  "Recognized for setting up CI/CD pipelines to automate deployments and delivering tested, AI-enabled backend features for banking applications.";
+
+export const leadershipEntries = [
+  {
+    organization: "Vaneesha Rise Foundation",
+    role: "Environmental initiatives",
+    category: "Community",
+    description: "Led tree-planting and cleanup drives in Pune.",
+  },
+  {
+    organization: "Avanti Fellows",
+    role: "Academic mentoring",
+    category: "Mentoring",
+    description: "Mentored students from underprivileged backgrounds and provided academic guidance.",
+  },
+  {
+    organization: "VNIT Nagpur · ECE",
+    role: "Training & Placement Coordinator",
+    category: "Campus leadership",
+    description: "Coordinated placement activities and employer outreach for the Electronics and Communication Engineering department.",
+  },
+];
+// TODO: Add verified participation dates, volunteer/student counts, and outcomes for the activities above.
+
+// Titles and dates were checked against the existing certificate images.
+// TODO: Add issuer-hosted verification links if available; current links open the supplied certificates.
+export const certificationEntries = [
+  {
+    title: "OCI 2025 Generative AI Professional",
+    issuer: "Oracle University",
+    issued: "21 Nov 2025",
+    validUntil: "21 Nov 2027",
+    certificatePath: "/assets/oracle_gen_ai_professional.jpg",
+  },
+  {
+    title: "OCI 2025 AI Foundations Associate",
+    issuer: "Oracle University",
+    issued: "11 Apr 2025",
+    validUntil: "11 Apr 2027",
+    certificatePath: "/assets/oracle_ai_foundations.jpg",
   },
 ];
 

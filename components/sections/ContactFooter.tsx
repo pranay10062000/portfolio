@@ -11,7 +11,7 @@ export default function ContactFooter() {
     <footer id="contact" className="contact-footer">
       <div className="container contact-inner">
         <div className="contact-heading">
-          <p className="eyebrow">05 / Get in touch</p>
+          <p className="eyebrow">07 / Get in touch</p>
           <h2>Let&apos;s build something that works.</h2>
           <figure className="contact-companions">
             <div className="contact-companions-image">

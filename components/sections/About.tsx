@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { aboutCopy, awardUrl } from "@/lib/portfolio-data";
+import { aboutCopy, awardDescription, awardUrl } from "@/lib/portfolio-data";
 
 export default function About() {
   return (
@@ -22,7 +22,7 @@ export default function About() {
         <article className="about-item">
           <p className="about-label">Recognition / 2024</p>
           <h3>Oracle Pacesetter Award</h3>
-          <p>Recognized for setting up CI/CD pipelines to automate deployments and delivering tested, AI-enabled backend features for banking applications.</p>
+          <p>{awardDescription}</p>
           <a className="about-link" href={awardUrl} target="_blank" rel="noreferrer">
             View certificate<ArrowUpRight size={17} aria-hidden="true" />
           </a>

@@ -1,4 +1,6 @@
 import About from "@/components/sections/About";
+import Certifications from "@/components/sections/Certifications";
+import Community from "@/components/sections/Community";
 import ContactFooter from "@/components/sections/ContactFooter";
 import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
@@ -7,5 +9,20 @@ import Skills from "@/components/sections/Skills";
 import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
-  return <><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content"><Hero /><Experience /><Projects /><Skills /><About /></main><ContactFooter /></>;
+  return (
+    <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <Navbar />
+      <main id="main-content">
+        <Hero />
+        <Experience />
+        <Projects />
+        <Skills />
+        <About />
+        <Community />
+        <Certifications />
+      </main>
+      <ContactFooter />
+    </>
+  );
 }

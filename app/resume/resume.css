@@ -16,9 +16,11 @@
 .resume-download-card > .eyebrow { font-size: 10px; margin-bottom: 6px; }
 .resume-download-card h2 { font-size: 21px; font-weight: 600; letter-spacing: -.04em; line-height: 1.3; }
 .resume-download-card > p:not(.eyebrow) { font-size: 13px; color: #515d77; line-height: 1.7; margin-top: 10px; }
-.resume-download-card .button { width: 100%; margin-top: 20px; }
-.resume-open-pdf { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin-top: 5px; color: var(--accent); font-size: 12px; }
-.resume-open-pdf:hover { text-decoration: underline; text-underline-offset: 4px; }
+.resume-download-actions { display: grid; gap: 10px; margin-top: 20px; }
+.resume-download-card .button { width: 100%; margin-top: 0; }
+.resume-open-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 12px; margin-top: 5px; }
+.resume-open-links a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: var(--accent); font-size: 11px; }
+.resume-open-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .resume-jump { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 30px; padding-block: 14px; border-block: 1px solid var(--line); }
 .resume-jump > .eyebrow { margin-right: 18px; font-size: 10px; color: var(--muted); }
 .resume-jump a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-inline: 12px; border-radius: var(--radius-control); font-size: 12px; font-weight: 600; }
@@ -39,6 +41,7 @@
 .resume-entry h3 { font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; margin-top: 2px; }
 .resume-entry-context { font-size: 12px; line-height: 1.7; margin-top: 9px; color: var(--muted); }
 .resume-entry-context strong { font-weight: 600; color: var(--foreground); }
+.resume-entry-note { margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .resume-bullets { display: grid; gap: 12px; list-style: disc; padding-left: 17px; margin-top: 20px; color: var(--muted); font-size: 14px; line-height: 1.85; }
 .resume-bullets li { padding-left: 4px; }
 .resume-bullets li::marker { color: #5575d4; font-size: 9px; }
@@ -51,6 +54,10 @@
 .resume-project-description { margin-top: 14px; font-size: 14px; line-height: 1.8; color: var(--muted); }
 .resume-project .resume-bullets { margin-top: 14px; gap: 8px; }
 .resume-project .text-link { margin-top: 15px; }
+.resume-community-entry + .resume-community-entry { margin-top: 24px; padding-top: 24px; border-top: 1px solid #e8eae3; }
+.resume-community-entry h3 { margin-top: 8px; font-size: 21px; font-weight: 600; line-height: 1.4; letter-spacing: -.03em; }
+.resume-community-role { margin-top: 6px; color: var(--accent); font-size: 12px; line-height: 1.7; }
+.resume-community-copy { margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.85; }
 .resume-side-column .resume-card { padding: 25px; }
 .resume-side-column .resume-card-heading { display: block; margin-bottom: 22px; padding-bottom: 20px; }
 .resume-side-column .resume-card-heading h2 { font-size: 24px; }
@@ -66,6 +73,10 @@
 .resume-award-copy { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 12px; }
 .resume-award-link { display: inline-flex; align-items: center; min-height: 44px; gap: 9px; margin-top: 12px; color: var(--accent); font-size: 12px; font-weight: 600; }
 .resume-award-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.resume-certification + .resume-certification { margin-top: 22px; padding-top: 22px; border-top: 1px solid #e8eae3; }
+.resume-certification h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; }
+.resume-certification-issuer { margin-top: 8px; color: var(--accent); font-size: 11px; line-height: 1.7; }
+.resume-certification-dates { margin-top: 12px; color: var(--muted); font-size: 11px; line-height: 1.9; }
 .resume-personal-card { background: #f0f2eb; }
 .resume-companion-image { position: relative; width: min(100%,240px); aspect-ratio: 3/4; margin-inline: auto; }
 .resume-companion-image img { object-fit: contain; filter: grayscale(1); }
@@ -111,8 +122,8 @@
   .resume-download-card .eyebrow { margin: 0; }
   .resume-download-card h2 { font-size: 20px; }
   .resume-download-card > p:not(.eyebrow) { grid-column: 1/-1; margin-top: 8px; }
-  .resume-download-card .button { grid-column: 1/-1; margin-top: 14px; }
-  .resume-open-pdf { grid-column: 1/-1; margin-top: 0; }
+  .resume-download-actions { grid-column: 1/-1; margin-top: 14px; }
+  .resume-open-links { grid-column: 1/-1; margin-top: 0; justify-content: center; gap: 0 24px; }
   .resume-jump { padding-block: 12px; margin-bottom: 22px; }
   .resume-jump a { padding-inline: 9px; font-size: 11px; gap: 6px; }
   .resume-jump > .eyebrow { padding-left: 9px; }

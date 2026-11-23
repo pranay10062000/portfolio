@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUp, ArrowUpRight, Briefcase, Download, FileText, FolderOpen, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowLeft, ArrowUp, ArrowUpRight, Briefcase, Download, FileText, FolderOpen, Github, Linkedin, Mail, MapPin, Phone, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Navbar from "@/components/ui/Navbar";
 import ResumeSidebar from "@/components/resume/ResumeSidebar";
-import { contactEmail, experienceEntries, resumePath, socialLinks, workEntries } from "@/lib/portfolio-data";
+import { contactEmail, detailedResumePath, experienceEntries, leadershipEntries, resumePath, socialLinks, workEntries } from "@/lib/portfolio-data";
 import "./resume.css";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Explore Pranay Dumbhare's experience, projects, skills, and education as a Software Engineer 2 at Oracle. Download the latest one-page resume.",
+  description: "Explore Pranay Dumbhare's full professional profile: Oracle experience, both internships, research, projects, community leadership, OCI certifications, and both resume versions.",
   alternates: { canonical: "/resume" },
   openGraph: {
     title: "Pranay Dumbhare | Resume",
@@ -21,14 +21,16 @@ export const metadata: Metadata = {
 const sectionLinks = [
   ["Experience", "resume-experience"],
   ["Projects", "resume-projects"],
+  ["Leadership", "resume-leadership"],
   ["Skills", "resume-skills"],
   ["Education", "resume-education"],
   ["Recognition", "resume-recognition"],
+  ["Certifications", "resume-certifications"],
 ];
 
 function emphasize(text: string) {
-  return text.split(/(account[- ]opening|account originations?|\b\d+(?:%|\+)|17 services)/gi).map((part, index) =>
-    /^(account[- ]opening|account originations?|\d+(?:%|\+)|17 services)$/i.test(part) ? <strong key={index}>{part}</strong> : part,
+  return text.split(/(account[- ]opening|account originations?|\b\d+(?:%|\+)|17 services|\bcloud\b)/gi).map((part, index) =>
+    /^(account[- ]opening|account originations?|\d+(?:%|\+)|17 services|cloud)$/i.test(part) ? <strong key={index}>{part}</strong> : part,
   );
 }
 
@@ -40,14 +42,14 @@ export default function ResumePage() {
       <main id="main-content" className="container resume-page">
         <div className="resume-topline">
           <Link href="/" className="text-link"><ArrowLeft size={16} aria-hidden="true" /> Back to portfolio</Link>
-          <p className="eyebrow">The resume / A closer look</p>
+          <p className="eyebrow">The full profile / A closer look</p>
         </div>
 
         <header id="resume-intro" className="resume-intro">
           <div className="resume-profile">
             <h1>Pranay Dumbhare<span aria-hidden="true">.</span></h1>
             <p className="resume-role">Software Engineer 2</p>
-            <p className="resume-summary">I build backend services for <strong>account origination</strong> and <strong>account opening</strong> at Oracle, with experience across API development, performance engineering, and AI-assisted automation.</p>
+            <p className="resume-summary">I build backend services for <strong>account origination</strong> and <strong>account opening</strong> at Oracle, with experience across API development, performance engineering, and AI-assisted automation. This is the fuller picture: both internships, robotics and medical image research, community work, and continued learning.</p>
             <p className="resume-location"><MapPin size={15} aria-hidden="true" /> Pune, Maharashtra, India</p>
             <nav className="resume-contacts" aria-label="Contact and profiles">
               <a href={`mailto:${contactEmail}`} aria-label={`Email ${contactEmail}`}><Mail size={16} aria-hidden="true" /> Email</a>
@@ -59,10 +61,16 @@ export default function ResumePage() {
           <div className="resume-download-card">
             <span className="resume-file-icon"><FileText size={25} aria-hidden="true" /></span>
             <p className="eyebrow">Take a copy</p>
-            <h2>The one-page resume.</h2>
-            <p>Experience, skills, and key results in a concise PDF.</p>
-            <Button href={resumePath} download ariaLabel="Download Pranay Dumbhare's one-page resume"><Download size={17} aria-hidden="true" /> Download PDF</Button>
-            <a className="resume-open-pdf" href={resumePath} target="_blank" rel="noopener noreferrer">Open in a new tab<ArrowUpRight size={16} aria-hidden="true" /></a>
+            <h2>Two ways to take a copy.</h2>
+            <p>A one-page overview or a two-page resume with fuller experience and activities.</p>
+            <div className="resume-download-actions">
+              <Button href={resumePath} download ariaLabel="Download Pranay Dumbhare's one-page resume"><Download size={17} aria-hidden="true" /> One-page PDF</Button>
+              <Button href={detailedResumePath} variant="secondary" download ariaLabel="Download Pranay Dumbhare's detailed two-page resume"><Download size={17} aria-hidden="true" /> Detailed PDF</Button>
+            </div>
+            <div className="resume-open-links">
+              <a href={resumePath} target="_blank" rel="noopener noreferrer">Open one-page<ArrowUpRight size={13} aria-hidden="true" /></a>
+              <a href={detailedResumePath} target="_blank" rel="noopener noreferrer">Open detailed<ArrowUpRight size={13} aria-hidden="true" /></a>
+            </div>
           </div>
         </header>
 
@@ -85,7 +93,8 @@ export default function ResumePage() {
                     <p className="resume-entry-period">{entry.period}</p>
                   </div>
                   <h3>{entry.role}</h3>
-                  <p className="resume-entry-context">{emphasize(entry.team)}<span aria-hidden="true"> · </span>{entry.location}</p>
+                  <p className="resume-entry-context">{emphasize(entry.team)}{entry.location && <><span aria-hidden="true"> · </span>{entry.location}</>}</p>
+                  {entry.note && <p className="resume-entry-note">{entry.note}</p>}
                   <ul className="resume-bullets">{entry.bullets.map((bullet) => <li key={bullet}>{emphasize(bullet)}</li>)}</ul>
                 </article>
               ))}
@@ -103,6 +112,21 @@ export default function ResumePage() {
                   <p className="resume-project-description">{project.description}</p>
                   <ul className="resume-bullets">{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                   <a className="text-link" href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel}<ArrowUpRight size={16} aria-hidden="true" /></a>
+                </article>
+              ))}
+            </section>
+
+            <section id="resume-leadership" className="resume-card" aria-labelledby="resume-leadership-title">
+              <header className="resume-card-heading">
+                <div><p className="eyebrow">03 / Beyond work</p><h2 id="resume-leadership-title">Leadership & community</h2></div>
+                <Users size={22} aria-hidden="true" />
+              </header>
+              {leadershipEntries.map((entry) => (
+                <article className="resume-community-entry" key={entry.organization}>
+                  <p className="resume-project-kind">{entry.category}</p>
+                  <h3>{entry.organization}</h3>
+                  <p className="resume-community-role">{entry.role}</p>
+                  <p className="resume-community-copy">{entry.description}</p>
                 </article>
               ))}
             </section>

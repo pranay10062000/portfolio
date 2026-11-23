@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
-import { awardUrl, skillGroups } from "@/lib/portfolio-data";
+import { awardDescription, awardUrl, certificationEntries, skillGroups } from "@/lib/portfolio-data";
 
 export default function ResumeSidebar() {
   return (
     <div className="resume-side-column">
       <section id="resume-skills" className="resume-card" aria-labelledby="resume-skills-title">
         <header className="resume-card-heading">
-          <p className="eyebrow">03 / Skills</p>
+          <p className="eyebrow">04 / Skills</p>
           <h2 id="resume-skills-title">Technical skills</h2>
         </header>
         {skillGroups.map((group) => (
@@ -23,7 +23,7 @@ export default function ResumeSidebar() {
 
       <section id="resume-education" className="resume-card" aria-labelledby="resume-education-title">
         <header className="resume-card-heading">
-          <p className="eyebrow">04 / Education</p>
+          <p className="eyebrow">05 / Education</p>
           <h2 id="resume-education-title">Education</h2>
         </header>
         <h3 className="resume-school">Visvesvaraya National Institute of Technology, Nagpur</h3>
@@ -36,17 +36,34 @@ export default function ResumeSidebar() {
 
       <section id="resume-recognition" className="resume-card" aria-labelledby="resume-recognition-title">
         <header className="resume-card-heading">
-          <p className="eyebrow">05 / Recognition</p>
+          <p className="eyebrow">06 / Recognition</p>
           <h2 id="resume-recognition-title">Recognition</h2>
         </header>
         <h3 className="resume-award-title">Oracle Pacesetter Award</h3>
         <p className="resume-period"><time dateTime="2024">2024</time></p>
         <p className="resume-award-copy">
-          Recognized for setting up CI/CD pipelines to automate deployments and delivering tested, AI-enabled backend features for banking applications.
+          {awardDescription}
         </p>
         <a className="resume-award-link" href={awardUrl} target="_blank" rel="noopener noreferrer">
           View certificate<ArrowUpRight size={17} aria-hidden="true" />
         </a>
+      </section>
+
+      <section id="resume-certifications" className="resume-card" aria-labelledby="resume-certifications-title">
+        <header className="resume-card-heading">
+          <p className="eyebrow">07 / Continued learning</p>
+          <h2 id="resume-certifications-title">Certifications</h2>
+        </header>
+        {certificationEntries.map((entry) => (
+          <article className="resume-certification" key={entry.title}>
+            <h3>{entry.title}</h3>
+            <p className="resume-certification-issuer">{entry.issuer}</p>
+            <p className="resume-certification-dates">Earned {entry.issued}<br />Valid until {entry.validUntil}</p>
+            <a className="resume-award-link" href={entry.certificatePath} target="_blank" rel="noopener noreferrer">
+              View certificate<ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </article>
+        ))}
       </section>
 
       <section className="resume-card resume-personal-card" aria-labelledby="resume-personal-title">
