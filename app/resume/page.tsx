@@ -1,76 +1,119 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Download, ExternalLink } from "lucide-react";
-
+import { ArrowLeft, ArrowUp, ArrowUpRight, Briefcase, Download, FileText, FolderOpen, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Navbar from "@/components/ui/Navbar";
-import { resumePath } from "@/lib/portfolio-data";
+import ResumeSidebar from "@/components/resume/ResumeSidebar";
+import { contactEmail, experienceEntries, resumePath, socialLinks, workEntries } from "@/lib/portfolio-data";
+import "./resume.css";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description:
-    "Resume of Pranay Dumbhare, a Java backend engineer specializing in Spring Boot, microservices, performance engineering, GenAI automation, and CI/CD.",
+  description: "Explore Pranay Dumbhare's experience, projects, skills, and education as a Software Engineer 2 at Oracle. Download the latest one-page resume.",
+  alternates: { canonical: "/resume" },
+  openGraph: {
+    title: "Pranay Dumbhare | Resume",
+    description: "Java backend development, performance engineering, and AI-assisted automation. Experience, projects, skills, and a downloadable resume.",
+    url: "/resume",
+  },
 };
+
+const sectionLinks = [
+  ["Experience", "resume-experience"],
+  ["Projects", "resume-projects"],
+  ["Skills", "resume-skills"],
+  ["Education", "resume-education"],
+  ["Recognition", "resume-recognition"],
+];
+
+function emphasize(text: string) {
+  return text.split(/(account[- ]opening|account originations?|\b\d+(?:%|\+)|17 services)/gi).map((part, index) =>
+    /^(account[- ]opening|account originations?|\d+(?:%|\+)|17 services)$/i.test(part) ? <strong key={index}>{part}</strong> : part,
+  );
+}
 
 export default function ResumePage() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Navbar />
-      <main className="relative min-h-screen overflow-hidden bg-background px-5 pb-16 pt-32 text-white sm:px-8 sm:pt-36 lg:px-10">
-        <div className="hero-grid absolute inset-0" aria-hidden="true" />
-        <div
-          className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-accent/10 blur-[130px]"
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto max-w-[1180px] 2xl:max-w-[1480px]">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white/60 hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Back to portfolio
-          </Link>
-
-          <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-accent sm:text-sm">
-                Resume
-              </p>
-              <h1 className="mt-3 text-balance text-[clamp(2.4rem,7vw,5rem)] font-black leading-[0.96] tracking-[-0.06em]">
-                Pranay Dumbhare
-              </h1>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-white/60 sm:text-lg">
-                Java Backend Engineer · Spring Boot · Microservices · Performance Engineering ·
-                GenAI Automation · AWS &amp; OCI
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 min-[430px]:flex-row">
-              <Button href={resumePath} download>
-                <Download className="h-4 w-4" aria-hidden="true" />
-                Download PDF
-              </Button>
-              <Button href={resumePath} variant="secondary" external>
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                Open PDF
-              </Button>
-            </div>
-          </div>
-
-          <section className="mt-10 rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-4 sm:p-5">
-            <div className="rounded-2xl border border-white/10 bg-[#111216] p-5 text-center md:hidden">
-              <p className="text-sm leading-6 text-white/62">
-                For the clearest mobile view, open or download the one-page PDF using the buttons
-                above.
-              </p>
-            </div>
-            <iframe
-              src={`${resumePath}#view=FitH`}
-              title="Pranay Dumbhare resume PDF"
-              className="hidden h-[1050px] w-full rounded-xl bg-white md:block"
-            />
-          </section>
+      <main id="main-content" className="container resume-page">
+        <div className="resume-topline">
+          <Link href="/" className="text-link"><ArrowLeft size={16} aria-hidden="true" /> Back to portfolio</Link>
+          <p className="eyebrow">The resume / A closer look</p>
         </div>
+
+        <header id="resume-intro" className="resume-intro">
+          <div className="resume-profile">
+            <h1>Pranay Dumbhare<span aria-hidden="true">.</span></h1>
+            <p className="resume-role">Software Engineer 2</p>
+            <p className="resume-summary">I build backend services for <strong>account origination</strong> and <strong>account opening</strong> at Oracle, with experience across API development, performance engineering, and AI-assisted automation.</p>
+            <p className="resume-location"><MapPin size={15} aria-hidden="true" /> Pune, Maharashtra, India</p>
+            <nav className="resume-contacts" aria-label="Contact and profiles">
+              <a href={`mailto:${contactEmail}`} aria-label={`Email ${contactEmail}`}><Mail size={16} aria-hidden="true" /> Email</a>
+              <a href={socialLinks.find((link) => link.label === "LinkedIn")!.href} target="_blank" rel="noopener noreferrer"><Linkedin size={16} aria-hidden="true" /> LinkedIn<ArrowUpRight size={13} aria-hidden="true" /></a>
+              <a href={socialLinks.find((link) => link.label === "GitHub")!.href} target="_blank" rel="noopener noreferrer"><Github size={16} aria-hidden="true" /> GitHub<ArrowUpRight size={13} aria-hidden="true" /></a>
+              <a href="tel:+917744024976" aria-label="Call Pranay at +91 77440 24976"><Phone size={15} aria-hidden="true" /> Phone</a>
+            </nav>
+          </div>
+          <div className="resume-download-card">
+            <span className="resume-file-icon"><FileText size={25} aria-hidden="true" /></span>
+            <p className="eyebrow">Take a copy</p>
+            <h2>The one-page resume.</h2>
+            <p>Experience, skills, and key results in a concise PDF.</p>
+            <Button href={resumePath} download ariaLabel="Download Pranay Dumbhare's one-page resume"><Download size={17} aria-hidden="true" /> Download PDF</Button>
+            <a className="resume-open-pdf" href={resumePath} target="_blank" rel="noopener noreferrer">Open in a new tab<ArrowUpRight size={16} aria-hidden="true" /></a>
+          </div>
+        </header>
+
+        <nav className="resume-jump" aria-label="Resume sections">
+          <span className="eyebrow">On this page</span>
+          {sectionLinks.map(([label, id], index) => <a key={id} href={`#${id}`}><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{label}</a>)}
+        </nav>
+
+        <div className="resume-layout">
+          <div className="resume-main-column">
+            <section id="resume-experience" className="resume-card" aria-labelledby="resume-experience-title">
+              <header className="resume-card-heading">
+                <div><p className="eyebrow">01 / Career</p><h2 id="resume-experience-title">Experience</h2></div>
+                <Briefcase size={22} aria-hidden="true" />
+              </header>
+              {experienceEntries.map((entry) => (
+                <article className="resume-entry" key={`${entry.company}-${entry.role}`}>
+                  <div className="resume-entry-top">
+                    <a className="resume-company" href={entry.companyUrl} target="_blank" rel="noopener noreferrer">{entry.company}<ArrowUpRight size={15} aria-hidden="true" /></a>
+                    <p className="resume-entry-period">{entry.period}</p>
+                  </div>
+                  <h3>{entry.role}</h3>
+                  <p className="resume-entry-context">{emphasize(entry.team)}<span aria-hidden="true"> · </span>{entry.location}</p>
+                  <ul className="resume-bullets">{entry.bullets.map((bullet) => <li key={bullet}>{emphasize(bullet)}</li>)}</ul>
+                </article>
+              ))}
+            </section>
+
+            <section id="resume-projects" className="resume-card" aria-labelledby="resume-projects-title">
+              <header className="resume-card-heading">
+                <div><p className="eyebrow">02 / Building & research</p><h2 id="resume-projects-title">Projects</h2></div>
+                <FolderOpen size={22} aria-hidden="true" />
+              </header>
+              {workEntries.map((project) => (
+                <article className="resume-project" key={project.title}>
+                  <p className="resume-project-kind">{project.eyebrow}</p>
+                  <div className="resume-project-title"><h3>{project.title}</h3><p>{project.period}</p></div>
+                  <p className="resume-project-description">{project.description}</p>
+                  <ul className="resume-bullets">{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                  <a className="text-link" href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel}<ArrowUpRight size={16} aria-hidden="true" /></a>
+                </article>
+              ))}
+            </section>
+          </div>
+          <ResumeSidebar />
+        </div>
+
+        <footer className="resume-endbar">
+          <div><p>Have a role in mind?</p><a href={`mailto:${contactEmail}`} className="text-link">Let&apos;s talk<ArrowUpRight size={16} aria-hidden="true" /></a></div>
+          <a className="text-link" href="#resume-intro">Back to top<ArrowUp size={16} aria-hidden="true" /></a>
+        </footer>
       </main>
     </>
   );
