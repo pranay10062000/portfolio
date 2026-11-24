@@ -52,15 +52,17 @@ export default function ResumeSidebar() {
       <section id="resume-certifications" className="resume-card" aria-labelledby="resume-certifications-title">
         <header className="resume-card-heading">
           <p className="eyebrow">07 / Continued learning</p>
-          <h2 id="resume-certifications-title">Certifications</h2>
+          <h2 id="resume-certifications-title">Credentials</h2>
         </header>
         {certificationEntries.map((entry) => (
           <article className="resume-certification" key={entry.title}>
             <h3>{entry.title}</h3>
             <p className="resume-certification-issuer">{entry.issuer}</p>
-            <p className="resume-certification-dates">Earned {entry.issued}<br />Valid until {entry.validUntil}</p>
-            <a className="resume-award-link" href={entry.certificatePath} target="_blank" rel="noopener noreferrer">
-              View certificate<ArrowUpRight size={16} aria-hidden="true" />
+            <p className="resume-credential-kind">{entry.kind}</p>
+            <p className="resume-certification-dates">Earned {entry.issued}{entry.validUntil && <><br />Valid until {entry.validUntil}</>}</p>
+            {entry.credentialId && <p className="resume-credential-id">Credential ID: <span>{entry.credentialId}</span></p>}
+            <a className="resume-award-link" href={entry.href} target="_blank" rel="noopener noreferrer">
+              {entry.linkLabel}<ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </article>
         ))}

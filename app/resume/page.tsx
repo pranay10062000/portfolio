@@ -4,12 +4,12 @@ import { ArrowLeft, ArrowUp, ArrowUpRight, Briefcase, Download, FileText, Folder
 import { Button } from "@/components/ui/Button";
 import Navbar from "@/components/ui/Navbar";
 import ResumeSidebar from "@/components/resume/ResumeSidebar";
-import { contactEmail, detailedResumePath, experienceEntries, leadershipEntries, resumePath, socialLinks, workEntries } from "@/lib/portfolio-data";
+import { contactEmail, experienceEntries, leadershipEntries, resumePath, socialLinks, workEntries } from "@/lib/portfolio-data";
 import "./resume.css";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Explore Pranay Dumbhare's full professional profile: Oracle experience, both internships, research, projects, community leadership, OCI certifications, and both resume versions.",
+  description: "Explore Pranay Dumbhare's full professional profile: Oracle experience, both internships, research, projects, community leadership, selected credentials, and a one-page resume download.",
   alternates: { canonical: "/resume" },
   openGraph: {
     title: "Pranay Dumbhare | Resume",
@@ -25,7 +25,7 @@ const sectionLinks = [
   ["Skills", "resume-skills"],
   ["Education", "resume-education"],
   ["Recognition", "resume-recognition"],
-  ["Certifications", "resume-certifications"],
+  ["Credentials", "resume-certifications"],
 ];
 
 function emphasize(text: string) {
@@ -61,15 +61,13 @@ export default function ResumePage() {
           <div className="resume-download-card">
             <span className="resume-file-icon"><FileText size={25} aria-hidden="true" /></span>
             <p className="eyebrow">Take a copy</p>
-            <h2>Two ways to take a copy.</h2>
-            <p>A one-page overview or a two-page resume with fuller experience and activities.</p>
+            <h2>The one-page resume.</h2>
+            <p>A concise overview of my experience, skills, and key results. The full profile continues below.</p>
             <div className="resume-download-actions">
               <Button href={resumePath} download ariaLabel="Download Pranay Dumbhare's one-page resume"><Download size={17} aria-hidden="true" /> One-page PDF</Button>
-              <Button href={detailedResumePath} variant="secondary" download ariaLabel="Download Pranay Dumbhare's detailed two-page resume"><Download size={17} aria-hidden="true" /> Detailed PDF</Button>
             </div>
             <div className="resume-open-links">
-              <a href={resumePath} target="_blank" rel="noopener noreferrer">Open one-page<ArrowUpRight size={13} aria-hidden="true" /></a>
-              <a href={detailedResumePath} target="_blank" rel="noopener noreferrer">Open detailed<ArrowUpRight size={13} aria-hidden="true" /></a>
+              <a href={resumePath} target="_blank" rel="noopener noreferrer">Open PDF in a new tab<ArrowUpRight size={13} aria-hidden="true" /></a>
             </div>
           </div>
         </header>

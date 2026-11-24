@@ -35,6 +35,17 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type CredentialEntry = {
+  title: string;
+  issuer: string;
+  kind: "Certification" | "Course certificate";
+  issued: string;
+  validUntil?: string;
+  credentialId?: string;
+  href: string;
+  linkLabel: string;
+};
+
 export type SocialLabel = "GitHub" | "LinkedIn" | "Email";
 
 export type SocialLink = {
@@ -43,7 +54,6 @@ export type SocialLink = {
 };
 
 export const resumePath = "/assets/Pranay_Dumbhare_Resume.pdf";
-export const detailedResumePath = "/assets/Pranay_Dumbhare_Resume_Detailed.pdf";
 
 export const navigationLinks: NavigationLink[] = [
   { label: "Experience", href: "/#experience" },
@@ -257,22 +267,65 @@ export const leadershipEntries = [
 ];
 // TODO: Add verified participation dates, volunteer/student counts, and outcomes for the activities above.
 
-// Titles and dates were checked against the existing certificate images.
-// TODO: Add issuer-hosted verification links if available; current links open the supplied certificates.
-export const certificationEntries = [
+// OCI details were checked against the supplied certificate images.
+// Course names, dates, and IDs were provided by the user; linked records were
+// checked for matching candidate and course names on 24 November 2026.
+// AWS/Coursera course certificates are not presented as professional certifications.
+// TODO: Add issuer-hosted OCI verification links if available; the existing links open the supplied certificates.
+export const certificationEntries: CredentialEntry[] = [
   {
     title: "OCI 2025 Generative AI Professional",
     issuer: "Oracle University",
+    kind: "Certification",
     issued: "21 Nov 2025",
     validUntil: "21 Nov 2027",
-    certificatePath: "/assets/oracle_gen_ai_professional.jpg",
+    href: "/assets/oracle_gen_ai_professional.jpg",
+    linkLabel: "View certificate",
   },
   {
     title: "OCI 2025 AI Foundations Associate",
     issuer: "Oracle University",
+    kind: "Certification",
     issued: "11 Apr 2025",
     validUntil: "11 Apr 2027",
-    certificatePath: "/assets/oracle_ai_foundations.jpg",
+    href: "/assets/oracle_ai_foundations.jpg",
+    linkLabel: "View certificate",
+  },
+  {
+    title: "Migrating to the AWS Cloud",
+    issuer: "Amazon Web Services",
+    kind: "Course certificate",
+    issued: "Apr 2026",
+    credentialId: "C0IHXH6TVCOU",
+    href: "https://www.coursera.org/account/accomplishments/verify/C0IHXH6TVCOU",
+    linkLabel: "View credential",
+  },
+  {
+    title: "AWS Cloud Technical Essentials",
+    issuer: "Amazon Web Services",
+    kind: "Course certificate",
+    issued: "Apr 2026",
+    credentialId: "W9FJWY1T6JEQ",
+    href: "https://www.coursera.org/account/accomplishments/verify/W9FJWY1T6JEQ",
+    linkLabel: "View credential",
+  },
+  {
+    title: "Convolutional Neural Networks",
+    issuer: "Coursera",
+    kind: "Course certificate",
+    issued: "Jan 2021",
+    credentialId: "49M7AFJSN3SX",
+    href: "https://www.coursera.org/account/accomplishments/verify/49M7AFJSN3SX",
+    linkLabel: "View credential",
+  },
+  {
+    title: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
+    issuer: "Coursera",
+    kind: "Course certificate",
+    issued: "Oct 2020",
+    credentialId: "5LTMNAL5QM8N",
+    href: "https://www.coursera.org/account/accomplishments/verify/5LTMNAL5QM8N",
+    linkLabel: "View credential",
   },
 ];
 

@@ -18,7 +18,7 @@
 .resume-download-card > p:not(.eyebrow) { font-size: 13px; color: #515d77; line-height: 1.7; margin-top: 10px; }
 .resume-download-actions { display: grid; gap: 10px; margin-top: 20px; }
 .resume-download-card .button { width: 100%; margin-top: 0; }
-.resume-open-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 12px; margin-top: 5px; }
+.resume-open-links { display: flex; justify-content: center; margin-top: 5px; }
 .resume-open-links a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: var(--accent); font-size: 11px; }
 .resume-open-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .resume-jump { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 30px; padding-block: 14px; border-block: 1px solid var(--line); }
@@ -77,6 +77,9 @@
 .resume-certification h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; }
 .resume-certification-issuer { margin-top: 8px; color: var(--accent); font-size: 11px; line-height: 1.7; }
 .resume-certification-dates { margin-top: 12px; color: var(--muted); font-size: 11px; line-height: 1.9; }
+.resume-credential-kind { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.resume-credential-id { margin-top: 9px; color: var(--muted); font-size: 10px; line-height: 1.8; overflow-wrap: anywhere; }
+.resume-credential-id span { font-family: "Courier New",monospace; }
 .resume-personal-card { background: #f0f2eb; }
 .resume-companion-image { position: relative; width: min(100%,240px); aspect-ratio: 3/4; margin-inline: auto; }
 .resume-companion-image img { object-fit: contain; filter: grayscale(1); }
@@ -123,7 +126,7 @@
   .resume-download-card h2 { font-size: 20px; }
   .resume-download-card > p:not(.eyebrow) { grid-column: 1/-1; margin-top: 8px; }
   .resume-download-actions { grid-column: 1/-1; margin-top: 14px; }
-  .resume-open-links { grid-column: 1/-1; margin-top: 0; justify-content: center; gap: 0 24px; }
+  .resume-open-links { grid-column: 1/-1; margin-top: 0; }
   .resume-jump { padding-block: 12px; margin-bottom: 22px; }
   .resume-jump a { padding-inline: 9px; font-size: 11px; gap: 6px; }
   .resume-jump > .eyebrow { padding-left: 9px; }
